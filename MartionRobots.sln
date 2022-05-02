@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartionRobots.Shell", "MartionRobots.Shell\MartionRobots.Shell.csproj", "{1D1C9708-E765-4120-BC4D-7F156A7AAE5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartionRobots.Models", "MartionRobots.Models\MartionRobots.Models.csproj", "{134F8F23-7B96-4BC5-9CC0-8310DFB31358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartionRobots.UnitTests", "MartionRobots.UnitTests\MartionRobots.UnitTests.csproj", "{1537C84E-4618-4371-9E3F-DDAB490E8443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartionRobots.Core", "MartionRobots.Core\MartionRobots.Core.csproj", "{BA8C942F-14DE-4D20-9A8D-A3DCFA35EB54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D1C9708-E765-4120-BC4D-7F156A7AAE5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D1C9708-E765-4120-BC4D-7F156A7AAE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D1C9708-E765-4120-BC4D-7F156A7AAE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D1C9708-E765-4120-BC4D-7F156A7AAE5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134F8F23-7B96-4BC5-9CC0-8310DFB31358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134F8F23-7B96-4BC5-9CC0-8310DFB31358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134F8F23-7B96-4BC5-9CC0-8310DFB31358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134F8F23-7B96-4BC5-9CC0-8310DFB31358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1537C84E-4618-4371-9E3F-DDAB490E8443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1537C84E-4618-4371-9E3F-DDAB490E8443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1537C84E-4618-4371-9E3F-DDAB490E8443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1537C84E-4618-4371-9E3F-DDAB490E8443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8C942F-14DE-4D20-9A8D-A3DCFA35EB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8C942F-14DE-4D20-9A8D-A3DCFA35EB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8C942F-14DE-4D20-9A8D-A3DCFA35EB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8C942F-14DE-4D20-9A8D-A3DCFA35EB54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

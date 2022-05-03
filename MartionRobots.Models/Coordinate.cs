@@ -1,8 +1,6 @@
-using Microsoft.VisualBasic.CompilerServices;
-
 namespace MartionRobots.Models;
 
-public class Coordinate
+public struct Coordinate
 {
     public Coordinate(int x, int y)
     {
@@ -15,17 +13,14 @@ public class Coordinate
 
     public override bool Equals(object? obj)
     {
-        if (obj is Coordinate item)
-        {
-            return item.X == X && item.Y == Y;
-        }
+        if (obj is Coordinate item) return item.X == X && item.Y == Y;
 
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(X,Y);
+        return HashCode.Combine(X, Y);
     }
 
     #region Operator Overloading

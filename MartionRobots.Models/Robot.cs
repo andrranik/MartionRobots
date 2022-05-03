@@ -1,8 +1,15 @@
 namespace MartionRobots.Models;
 
-public class Robot
+public interface IRobot
 {
-    public Robot(RobotPosition position, ISurface surface)
+    RobotPositionStruct Position { get; }
+    ISurface Surface { get; }
+    string ApplyInstruction(string instructions);
+}
+
+public class Robot : IRobot
+{
+    public Robot(RobotPositionStruct position, ISurface surface)
     {
         Position = position;
         Surface = surface;
@@ -10,22 +17,16 @@ public class Robot
 
     public Robot(int x, int y, Direction direction, ISurface surface)
     {
-        Position = new RobotPosition(x, y, direction);
+        Position = new RobotPositionStruct(x, y, direction);
         Surface = surface;
     }
 
-    public RobotPosition Position { get; }
+    public RobotPositionStruct Position { get; private set; }
     public ISurface Surface { get; }
-    public Direction Direction
-    {
-        get => Position.Direction;
-        set => Position.Direction = value;
-    }
 
-    public void ApplyInstruction(string instructions)
+    public string ApplyInstruction(string instructions)
     {
         foreach (var instruction in instructions.ToUpper())
-        {
             switch (instruction)
             {
                 case 'R':
@@ -39,34 +40,29 @@ public class Robot
                     break;
                 default: throw new ApplicationException("Wrong Instruction");
             }
-        }
+
+        return Position.ToString();
     }
 
-    private void TurnLeft() => Direction = Direction.Previous();
+    private void TurnLeft()
+    {
+        Position = new RobotPositionStruct(Position.X, Position.Y, Position.Direction.Previous());
+    }
 
-    private void TurnRight() => Direction = Direction.Next();
+    private void TurnRight()
+    {
+        Position = new RobotPositionStruct(Position.X, Position.Y, Position.Direction.Next());
+    }
 
     private void MoveForward()
     {
-        switch (Direction)
+        Position = Position.Direction switch
         {
-            case Direction.N:
-                Position.AddY(1);
-                break;
-            case Direction.E:
-                Position.AddX(1);
-                break;
-            case Direction.S:
-                Position.AddY(-1);
-                break;
-            case Direction.W:
-                Position.AddX(-1);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException("Wrong Direction!");
-        }
-
-        if (!Surface.Includes(Position))
-            throw new Exception("LOST");
+            Direction.N => new RobotPositionStruct(Position.X, Position.Y + 1, Position.Direction),
+            Direction.E => new RobotPositionStruct(Position.X + 1, Position.Y, Position.Direction),
+            Direction.S => new RobotPositionStruct(Position.X, Position.Y - 1, Position.Direction),
+            Direction.W => new RobotPositionStruct(Position.X - 1, Position.Y, Position.Direction),
+            _ => throw new ArgumentOutOfRangeException("Wrong Direction!")
+        };
     }
 }

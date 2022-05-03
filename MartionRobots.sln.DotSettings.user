@@ -1,0 +1,12 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=545f451e_002D96c6_002D40ec_002D912a_002D624e4b7db924/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestAllowMoveThrows" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestAllowMoveThrows&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestAllowMoveIsTrue&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestCreateSurfaceSuccess&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestCreateEmptySurface&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestCreateOutOfLimitSurface&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestCreateNegativeCoordinateSurface&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::1537C84E-4618-4371-9E3F-DDAB490E8443::net6.0::MartionRobots.UnitTests.SurfaceTests.TestAllowMoveIsFalse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

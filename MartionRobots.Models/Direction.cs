@@ -21,5 +21,8 @@ public static class DirectionExtensions
         return j == -1 ? arr[^1] : arr[j];
     }
 
-    private static Direction[] GetDirectionsArray() => (Direction[])Enum.GetValues(typeof(Direction));
+    private static Direction[] GetDirectionsArray()
+    {
+        return (Direction[])Enum.GetValues(typeof(Direction));
+    }
 }

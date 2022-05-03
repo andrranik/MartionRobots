@@ -1,8 +1,8 @@
 namespace MartionRobots.Models;
 
-public readonly struct RobotPositionStruct
+public readonly struct RobotPosition
 {
-    public RobotPositionStruct(int x, int y, Direction direction)
+    public RobotPosition(int x, int y, Direction direction)
     {
         X = x;
         Y = y;
@@ -14,7 +14,7 @@ public readonly struct RobotPositionStruct
 
     public override bool Equals(object? obj)
     {
-        if (obj is RobotPositionStruct rp)
+        if (obj is RobotPosition rp)
         {
             return rp.X == X &&
                    rp.Y == Y &&
@@ -24,7 +24,7 @@ public readonly struct RobotPositionStruct
         return false;
     }
 
-    public bool Equals(RobotPositionStruct other)
+    public bool Equals(RobotPosition other)
     {
         return X == other.X && Y == other.Y && Direction == other.Direction;
     }

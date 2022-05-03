@@ -1,6 +1,5 @@
-using System.Data;
-using System.Runtime.ExceptionServices;
-using System.Transactions;
+using MartionRobots.Models.Exceptions;
+using MartionRobots.Models.Interfaces;
 
 namespace MartionRobots.Models;
 
@@ -23,64 +22,31 @@ public class Surface : ISurface
 
     public Coordinate Start { get; }
     public Coordinate End { get; }
-    public List<RobotPositionStruct> Losses { get; } = new List<RobotPositionStruct>();
+    public List<RobotPosition> Losses { get; } = new List<RobotPosition>();
 
-    public void AddLoss(RobotPositionStruct coordinate)
+    public void AddLoss(RobotPosition coordinate)
     {
         Losses.Add(coordinate);
     }
-
-    public bool Includes(Coordinate coordinate)
-    {
-        return coordinate <= End;
-    }
-
-    public bool AllowMove(RobotPositionStruct position)
+    public bool AllowMove(RobotPosition position)
     {
         if (Losses.Contains(position))
         {
             return false;
         }
 
-        if (position.Direction == Direction.N)
+        Func<bool> condition = position.Direction switch
         {
-            if (position.Y == End.Y)
-            {
-                throw new Exception();
-            }
-        }
+            Direction.N => () => position.Y == End.Y,
+            Direction.E => () => position.X == End.X,
+            Direction.S => () => position.Y == Start.Y,
+            Direction.W => () => position.X == Start.X,
+            _ => throw new ArgumentOutOfRangeException()
+        };
 
-        if (position.Direction == Direction.S)
-        {
-            if (position.Y == Start.Y)
-            {
-                throw new Exception();
-            }
-        }
-
-        if (position.Direction == Direction.E)
-        {
-            if (position.X == End.X)
-            {
-                throw new Exception();
-            }
-        }
-
-        if (position.Direction == Direction.W)
-        {
-            if (position.X == Start.X)
-            {
-                throw new Exception();
-            }
-        }
+        if (condition())
+            throw new RobotLostException();
 
         return true;
-    }
-}
-
-public class SurfaceCreationException : Exception
-{
-    public SurfaceCreationException(string message) : base(message)
-    {
     }
 }

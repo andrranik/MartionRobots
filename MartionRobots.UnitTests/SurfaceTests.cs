@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using MartionRobots.Models;
+using MartionRobots.Models.Exceptions;
 using NUnit.Framework;
 
 namespace MartionRobots.UnitTests;
@@ -59,7 +60,7 @@ public class SurfaceTests
     
     [Test]
     [TestCaseSource(nameof(GetAllowMoveIsTrueTestCases))]
-    public void TestAllowMoveIsTrue(RobotPositionStruct position)
+    public void TestAllowMoveIsTrue(RobotPosition position)
     {
         var surface = new Surface(new Coordinate(10, 10)); 
         Assert.True(surface.AllowMove(position));
@@ -67,7 +68,7 @@ public class SurfaceTests
 
     [Test]
     [TestCaseSource(nameof(GetLosses))]
-    public void TestAllowMoveIsFalse(RobotPositionStruct positions)
+    public void TestAllowMoveIsFalse(RobotPosition positions)
     {
         var surface = new Surface(new Coordinate(10, 10));
         var losses = GetLosses();
@@ -83,11 +84,11 @@ public class SurfaceTests
     public void TestAllowMoveThrows(int surfaceX, int surfaceY, int robotX, int robotY, Direction direction)
     {
         var surface = new Surface(new Coordinate(surfaceX, surfaceY));
-        var robotPosition = new RobotPositionStruct(robotX, robotY, direction);
+        var robotPosition = new RobotPosition(robotX, robotY, direction);
         Assert.Throws<Exception>(() => surface.AllowMove(robotPosition));
     }
 
-    public static IEnumerable<RobotPositionStruct> GetAllowMoveIsTrueTestCases()
+    public static IEnumerable<RobotPosition> GetAllowMoveIsTrueTestCases()
     {
         var surface = new Surface(new Coordinate(10, 10));
         for (int x = 0; x <= 10; x++)
@@ -100,7 +101,7 @@ public class SurfaceTests
                         y == 0 && d == (int)Direction.S || y == 10 && d == (int)Direction.N)
                         continue;
 
-                    yield return new RobotPositionStruct(x, y, (Direction)d);
+                    yield return new RobotPosition(x, y, (Direction)d);
                 }
             }
         }
@@ -117,13 +118,13 @@ public class SurfaceTests
         }
     }
 
-    public static List<RobotPositionStruct> GetLosses()
+    public static List<RobotPosition> GetLosses()
     {
         return Enumerable.Range(0, 10)
-            .Select(x => new RobotPositionStruct(x, 0, Direction.S))
-            .Concat(Enumerable.Range(0, 11).Select(x => new RobotPositionStruct(x, 10, Direction.N)))
-            .Concat(Enumerable.Range(0, 11).Select(x => new RobotPositionStruct(0, x, Direction.W)).ToList())
-            .Concat(Enumerable.Range(0, 11).Select(x => new RobotPositionStruct(10, x, Direction.E)).ToList())
+            .Select(x => new RobotPosition(x, 0, Direction.S))
+            .Concat(Enumerable.Range(0, 11).Select(x => new RobotPosition(x, 10, Direction.N)))
+            .Concat(Enumerable.Range(0, 11).Select(x => new RobotPosition(0, x, Direction.W)).ToList())
+            .Concat(Enumerable.Range(0, 11).Select(x => new RobotPosition(10, x, Direction.E)).ToList())
             .ToList();
     }
 }

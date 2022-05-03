@@ -1,20 +1,21 @@
 using System.Collections.Generic;
 using MartionRobots.Models;
+using MartionRobots.Models.Interfaces;
 
 namespace MartionRobots.Core;
 
 public class RobotDispatcher : IRobotDispatcher
 {
     private readonly IRobotFactory _robotFactory;
-    private Dictionary<RobotPositionStruct, IRobot> _robots;
+    private Dictionary<RobotPosition, IRobot> _robots;
 
     public RobotDispatcher(IRobotFactory robotFactory)
     {
         _robotFactory = robotFactory;
-        _robots = new Dictionary<RobotPositionStruct, IRobot>();
+        _robots = new Dictionary<RobotPosition, IRobot>();
     }
 
-    public IRobot GetOrCreateRobot(RobotPositionStruct position, ISurface surface)
+    public IRobot GetOrCreateRobot(RobotPosition position, ISurface surface)
     {
         return _robots.TryGetValue(position, out var robot)
             ? robot

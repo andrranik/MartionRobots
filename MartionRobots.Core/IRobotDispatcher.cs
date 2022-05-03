@@ -1,8 +1,9 @@
 using MartionRobots.Models;
+using MartionRobots.Models.Interfaces;
 
 namespace MartionRobots.Core;
 
 public interface IRobotDispatcher
 {
-    IRobot GetOrCreateRobot(RobotPositionStruct position, ISurface surface);
+    IRobot GetOrCreateRobot(RobotPosition position, ISurface surface);
 }

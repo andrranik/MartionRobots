@@ -1,4 +1,5 @@
 using MartionRobots.Models;
+using MartionRobots.Models.Interfaces;
 
 namespace MartionRobots.Core;
 

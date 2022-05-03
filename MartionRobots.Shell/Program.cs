@@ -12,35 +12,26 @@ var surfaceFactory = container.Resolve<ISurfaceFactory>();
 var dispatcher = container.Resolve<IRobotDispatcher>();
 
 var initialText =
-@"             Hello! 
+    @"             Hello! 
 It's the Martian Robot Coordinator!
 First of all you need to input upper-right point of surface.";
 
 Console.WriteLine(initialText);
-Console.Write("Upper-right x -> ");
-var x = int.Parse(Console.ReadLine());
-Console.Write("Upper-right y -> ");
-var y = int.Parse(Console.ReadLine());
+var x = ShellUtil.SaveReadInt("Upper-right x -> ");
+var y = ShellUtil.SaveReadInt("Upper-right y -> ");
 var surface = surfaceFactory.CreateSurface(new Coordinate(x, y));
 Console.WriteLine($"Surface from 0x0 to {x}x{y} has been created.");
 
-
-while (true)
+Console.WriteLine("To take a manage of another robot press 'ENTER'. To quit pres 'ESCAPE'");
+while (Console.ReadKey().Key != ConsoleKey.Escape)
 {
-    Console.WriteLine("To take a manage of another robot press 'ENTER'. To quit pres 'ESCAPE'");
-    if (Console.ReadKey().Key == ConsoleKey.Escape)
-    {
-        break;
-    }
-        
-    Console.Write("Enter X -> ");
-    var robotX = int.Parse(Console.ReadLine());
-    Console.Write("Enter Y -> ");
-    var robotY = int.Parse(Console.ReadLine());
-    Console.Write("Direction  ('N', 'E', 'S', 'W') -> ");
-    var direction = (Direction)int.Parse(Console.ReadLine());
-    var robot = dispatcher.GetOrCreateRobot(new RobotPositionStruct(robotX, robotY, direction), surface);
+    var robotX = ShellUtil.SaveReadInt("Enter X -> ");
+    var robotY = ShellUtil.SaveReadInt("Enter Y -> ");
+    var direction = ShellUtil.ReadDirections("Direction  ('N', 'E', 'S', 'W') -> ");
+    var robot = dispatcher.GetOrCreateRobot(new RobotPosition(robotX, robotY, direction), surface);
     Console.Write("Write instruction -> ");
     var instruction = Console.ReadLine();
-    Console.WriteLine(robot.ApplyInstruction(instruction));
+
+    if (instruction != null)
+        Console.WriteLine(robot.ApplyInstruction(instruction));
 }
